@@ -23,10 +23,10 @@ public class User implements Serializable{
 
 
     // setters 
-    public void getUsername(String username) { this.username = username; }
+    public void setUsername(String username) { this.username = username; }
     public void setPassword(String password) { this.password = password; }
-    public void getFirstName(String firstName) {this.firstName = firstName; }
-    public void getLastName(String lastName) {this.lastName = lastName; }
+    public void setFirstName(String firstName) {this.firstName = firstName; }
+    public void setLastName(String lastName) {this.lastName = lastName; }
     // full name
     public String getFullName() {
         return firstName + " " + lastName;
