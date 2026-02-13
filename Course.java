@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 public class Course {
     private String courseName;
     private String courseId; 
@@ -32,8 +33,8 @@ public class Course {
     public String getCourseLocation() { return courseLocation; }
 
     // setters
-    public void instructor(String instructor){ this.instructor = instructor; }
-    public void maxStudents(int maxStudents){ this.maxStudents = maxStudents; }
+    public void setinstructor(String instructor){ this.instructor = instructor; }
+    public void setmaxStudents(int maxStudents){ this.maxStudents = maxStudents; }
     public void setSectionNumber(int sectionNumber){this.sectionNumber = sectionNumber;}
     public void setCourseLocation(String courseLocation) { this.courseLocation = courseLocation;}
     

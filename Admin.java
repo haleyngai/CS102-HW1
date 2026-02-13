@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Admin extends User implements AdminInterface {
 
@@ -12,5 +13,23 @@ public class Admin extends User implements AdminInterface {
         super(username, password, firstName, lastName);
         this.courses = courses;
         this.students = students;
+    
+    }
+    public void createCourse() {
+    	Scanner scanner=new Scanner(System.in);
+    	System.out.println("/n==== Create New Course ====");
+    	System.out.print("Course Name:");
+    	String name=scanner.nextLine();
+    	
+    	System.out.print("Course ID: ");
+    	String id=scanner.nextLine();
+    	
+    	System.out.print("Maximum Students: ");
+    	int max=scanner.nextInt();
+    	
+    	System.out.print("Instructor: ");
+    	String instructor = scanner.nextLine();
+    	
+    	
     }
 }
