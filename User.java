@@ -1,7 +1,6 @@
 import java.io.Serializable; 
 
-public class User implements Serializable{
-    private static final long serialVersionUID = 1L;
+public class User implements Serializable{ 
 
     // Requirement 2 & 7 
     private String username; 

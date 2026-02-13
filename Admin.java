@@ -19,8 +19,12 @@ public class Admin extends User implements AdminInterface {
     }
     @Override
     public void createCourse() {
+    	if (courses == null) {
+    		System.out.println("Error: Courses list not initialized.");
+    		return;
+    	}
     	Scanner scanner=new Scanner(System.in);
-    	System.out.println("/n==== Create New Course ====");
+    	System.out.println("\n==== Create New Course ====");
     	System.out.print("Course Name:");
     	String name=scanner.nextLine();
     	
@@ -29,12 +33,14 @@ public class Admin extends User implements AdminInterface {
     	
     	System.out.print("Maximum Students: ");
     	int max=scanner.nextInt();
+    	scanner.nextLine();
     	
     	System.out.print("Instructor: ");
     	String instructor = scanner.nextLine();
     	
     	System.out.print("Section Number: ");
     	int section=scanner.nextInt();
+    	scanner.nextLine();
     	
     	System.out.print("Location: ");
     	String location=scanner.nextLine();
@@ -47,6 +53,10 @@ public class Admin extends User implements AdminInterface {
     }
     @Override
     public void deleteCourse() {
+    	if (courses == null || courses.isEmpty()) {
+    		System.out.println("No courses available to delete.");
+    		return;
+    	}
     	Scanner scanner=new Scanner(System.in);
     	
     	System.out.print("Enter Course Id to Delete: ");
@@ -64,6 +74,10 @@ public class Admin extends User implements AdminInterface {
     }
     @Override
     public void editCourse() {
+    	if (courses == null || courses.isEmpty()) {
+    		System.out.println("No courses available to edit.");
+    		return;
+    	}
     	Scanner scanner=new Scanner(System.in);
     	System.out.println("Enter Course Id to edit: ");
     	String courseID=scanner.nextLine();
@@ -83,24 +97,27 @@ public class Admin extends User implements AdminInterface {
     	
     	System.out.println("What do you want to edit?");
     	System.out.println("1: Maximum Students\n2: Instructor\n3: Section Number\n4: Location");
-    	System.out.println("What do you want to edit?");
     	String choice=scanner.nextLine();
     	
     	switch(choice) {
     	case"1":
     		System.out.println("New Maximum Students is: ");
     		target.setmaxStudents(scanner.nextInt());
+    		scanner.nextLine();
     		break;
     	case"2":
     		System.out.println("The New Instructor is: ");
+    		scanner.nextLine();
     		target.setinstructor(scanner.nextLine());
     		break;
     	case"3":
     		System.out.println("The New Section Number is: ");
     		target.setSectionNumber(scanner.nextInt());
+    		scanner.nextLine();
     		break;
     	case"4":
     		System.out.println("The New Location is: ");
+    		scanner.nextLine();
     		target.setCourseLocation(scanner.nextLine());
     		break;
     	default:
@@ -113,6 +130,10 @@ public class Admin extends User implements AdminInterface {
     }
     @Override
     public void displayCourseInfo() {
+    	if (courses == null || courses.isEmpty()) {
+    		System.out.println("No courses available.");
+    		return;
+    	}
     	Scanner scanner=new Scanner(System.in);
     	
     	System.out.print("Enter Course ID: ");
@@ -135,27 +156,31 @@ public class Admin extends User implements AdminInterface {
     }
     @Override
     public void registerStudent() {
+    	if (students == null) {
+    		System.out.println("Error: Students list not initialized.");
+    		return;
+    	}
     	Scanner scanner=new Scanner(System.in);
     	System.out.println("===== Register New Students =====");
-    	System.out.println("Username: ");
+    	System.out.print("Username: ");
     	String username=scanner.nextLine();
-    	System.out.println("Password: ");
+    	System.out.print("Password: ");
     	String password=scanner.nextLine();
-    	System.out.println("First Name: ");
+    	System.out.print("First Name: ");
     	String firstName=scanner.nextLine();
-    	System.out.println("Last Name: ");
+    	System.out.print("Last Name: ");
     	String lastName=scanner.nextLine();
     	
-    	Student newStudent=new Student(username,password,firstName,lastName);
+    	Student newStudent=new Student(username,password,firstName,lastName,new ArrayList<Course>());
     	
     	students.add(newStudent);
-    	System.out.println("Students Registered");
+    	System.out.println("Student Registered");
     	
     }
     @Override
     public void viewAllCourses() {
-    	if(courses.isEmpty()) {
-    		System.out.print("No Course is Available");
+    	if(courses == null || courses.isEmpty()) {
+    		System.out.println("No Course is Available");
     		return;
     	}
     	for(Course c: courses) {
@@ -169,6 +194,10 @@ public class Admin extends User implements AdminInterface {
     }
     @Override
     public void viewFullCourses() {
+    	if (courses == null || courses.isEmpty()) {
+    		System.out.println("No courses available.");
+    		return;
+    	}
     	System.out.println("===== Full Courses =====");
     	boolean found=false;
     	
@@ -193,9 +222,13 @@ public class Admin extends User implements AdminInterface {
     }
     @Override
     public void writeFullCoursesToFile() {
+    	if (courses == null || courses.isEmpty()) {
+    		System.out.println("No courses available.");
+    		return;
+    	}
     	try {
     		FileWriter writer=new FileWriter("FullCourses.txt");
-    		writer.write("===== Full Courses =====");
+    		writer.write("===== Full Courses =====\n");
     		
     		boolean found=false;
     		//check if it is full
@@ -223,12 +256,17 @@ public class Admin extends User implements AdminInterface {
     }
     @Override
     public void viewStudentsInCourse() {
+    	if (courses == null || courses.isEmpty()) {
+    		System.out.println("No courses available.");
+    		return;
+    	}
     	Scanner scanner=new Scanner(System.in);
     	
     	System.out.print("Enter Course ID: ");
     	String courseID=scanner.nextLine();
     	System.out.print("Enter Section Number: ");
     	int section=scanner.nextInt();
+    	scanner.nextLine();
     	
     	for(Course c:courses) {
     		if(c.getCourseId().equals(courseID)&& c.getSectionNumber()==(section)) {
@@ -251,6 +289,10 @@ public class Admin extends User implements AdminInterface {
     }
     @Override
     public void viewCoursesByStudent() {
+    	if (courses == null || courses.isEmpty()) {
+    		System.out.println("No courses available.");
+    		return;
+    	}
     	Scanner scanner=new Scanner(System.in);
     	System.out.print("Enter Student First Name: ");
         String firstName = scanner.nextLine();
@@ -279,6 +321,10 @@ public class Admin extends User implements AdminInterface {
     }
     @Override
     public void sortCoursesByEnrollment() {
+    	if (courses == null || courses.isEmpty()) {
+    		System.out.println("No courses available.");
+    		return;
+    	}
         ArrayList<Course> sortedCourses = new ArrayList<>(courses);
         
         //if current course students is less than the next, switch them

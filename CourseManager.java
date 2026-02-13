@@ -1,5 +1,3 @@
-import java.io.FileWriter;
-import java.io.IOException; 
 import java.util.ArrayList;
 
 public class CourseManager {
@@ -35,8 +33,8 @@ public class CourseManager {
         if (courses == null) return; 
         for (Course c: courses) {
             if (c.getCourseId().equals(courseId)){
-                c.setMaxStudents(maxStudents); 
-                c.setCourseInstructor(instructor); 
+                c.setmaxStudents(maxStudents); 
+                c.setinstructor(instructor); 
                 c.setSectionNumber(section);
                 c.setCourseLocation(location);
                 System.out.println("Course updated: " + courseId);

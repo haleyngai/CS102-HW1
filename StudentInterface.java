@@ -3,10 +3,10 @@ import java.util.ArrayList;
 public interface StudentInterface {
   
 	void viewAllCourses();
-	void viewFullCourses();
-	void registerOnCourse(String student);
-	void sortCoursesByEnrollment(String firstName, String lastName);
-
+	void viewNotFullCourses();
+	void registerOnCourse();
+	void withdrawFromCourse();
+	void viewMyCourses();
     ArrayList<Course> getCourses();
 	
 }

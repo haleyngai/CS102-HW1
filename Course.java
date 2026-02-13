@@ -4,7 +4,6 @@ public class Course {
     private String courseName;
     private String courseId; 
     private int maxStudents;
-    private int currentStudents;
     private ArrayList<String> studentNames; 
     private String instructor; 
     private int sectionNumber;
@@ -26,7 +25,7 @@ public class Course {
     public String getCourseName() { return courseName; }
     public String getCourseId() { return courseId; }
     public int getMaxStudents() { return maxStudents; }
-    public int getCurrentStudents() { return currentStudents; }
+    public int getCurrentStudents() { return studentNames.size(); }
     public ArrayList<String> getStudentNames() { return studentNames; }
     public String getInstructor() { return instructor; }
     public int getSectionNumber() { return sectionNumber; }
@@ -37,5 +36,23 @@ public class Course {
     public void setmaxStudents(int maxStudents){ this.maxStudents = maxStudents; }
     public void setSectionNumber(int sectionNumber){this.sectionNumber = sectionNumber;}
     public void setCourseLocation(String courseLocation) { this.courseLocation = courseLocation;}
+
+    public boolean isFull() {
+        return studentNames.size() >= maxStudents;
+    }
+
+    public boolean addStudent(String name) {
+        if (isFull() || studentNames.contains(name)) return false;
+        studentNames.add(name);
+        return true;
+    }
+
+    public boolean removeStudent(String name) {
+        return studentNames.remove(name);
+    }
+
+    public String toString() {
+        return courseName + " | " + courseId + " | Section " + sectionNumber + " | " + studentNames.size() + "/" + maxStudents + " | " + instructor + " | " + courseLocation;
+    }
     
 }
