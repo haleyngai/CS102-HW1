@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.util.Scanner;
 
+
 public class Admin extends User implements AdminInterface {
 
     private static final long serialVersionUID = 1L;
@@ -15,6 +16,7 @@ public class Admin extends User implements AdminInterface {
         super(username, password, firstName, lastName);
         this.courses = courses;
         this.students = students;
+        
     
     }
     @Override
@@ -157,7 +159,7 @@ public class Admin extends User implements AdminInterface {
     @Override
     public void registerStudent() {
     	if (students == null) {
-    		System.out.println("Error: Students list not initialized.");
+    		System.out.println("Error");
     		return;
     	}
     	Scanner scanner=new Scanner(System.in);
@@ -171,7 +173,7 @@ public class Admin extends User implements AdminInterface {
     	System.out.print("Last Name: ");
     	String lastName=scanner.nextLine();
     	
-    	Student newStudent=new Student(username,password,firstName,lastName,new ArrayList<Course>());
+    	Student newStudent=new Student(username,password,firstName,lastName);
     	
     	students.add(newStudent);
     	System.out.println("Student Registered");
@@ -356,5 +358,3 @@ public class Admin extends User implements AdminInterface {
     }
 }
 
-
-    
