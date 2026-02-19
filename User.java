@@ -1,8 +1,8 @@
 import java.io.Serializable; 
-
-public class User implements Serializable{
-    private static final long serialVersionUID = 1L;
-
+import java.io.Serializable;
+public class User implements Serializable{ 
+	//Serialization
+	private static final long seriaVersionUID=1L;
     // Requirement 2 & 7 
     private String username; 
     private String password; 
