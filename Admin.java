@@ -1,6 +1,6 @@
-import java.util.ArrayList;
-import java.io.IOException;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -16,7 +16,6 @@ public class Admin extends User implements AdminInterface {
         super(username, password, firstName, lastName);
         this.courses = courses;
         this.students = students;
-        
     
     }
     @Override
@@ -59,7 +58,7 @@ public class Admin extends User implements AdminInterface {
     		System.out.println("No courses available to delete.");
     		return;
     	}
-    	Scanner scanner=new Scanner(System.in);
+    	Scanner scanner = new Scanner(System.in);
     	
     	System.out.print("Enter Course Id to Delete: ");
     	String courseID=scanner.nextLine();
@@ -109,7 +108,6 @@ public class Admin extends User implements AdminInterface {
     		break;
     	case"2":
     		System.out.println("The New Instructor is: ");
-    		scanner.nextLine();
     		target.setinstructor(scanner.nextLine());
     		break;
     	case"3":
@@ -119,7 +117,6 @@ public class Admin extends User implements AdminInterface {
     		break;
     	case"4":
     		System.out.println("The New Location is: ");
-    		scanner.nextLine();
     		target.setCourseLocation(scanner.nextLine());
     		break;
     	default:
@@ -173,7 +170,7 @@ public class Admin extends User implements AdminInterface {
     	System.out.print("Last Name: ");
     	String lastName=scanner.nextLine();
     	
-    	Student newStudent=new Student(username,password,firstName,lastName);
+    	Student newStudent=new Student(username,password,firstName,lastName,new ArrayList<>());
     	
     	students.add(newStudent);
     	System.out.println("Student Registered");
@@ -228,8 +225,7 @@ public class Admin extends User implements AdminInterface {
     		System.out.println("No courses available.");
     		return;
     	}
-    	try {
-    		FileWriter writer=new FileWriter("FullCourses.txt");
+    	try (FileWriter writer = new FileWriter("FullCourses.txt")) {
     		writer.write("===== Full Courses =====\n");
     		
     		boolean found=false;
@@ -249,11 +245,8 @@ public class Admin extends User implements AdminInterface {
             if(!found) {
             	writer.write("No full Courses is found");
             }
-            
-            writer.close();
-            
-    	}catch (IOException e) {
-    		System.out.println("Error writeing a file: "+e.getMessage());
+    	} catch (IOException e) {
+    		System.out.println("Error writing to file: "+e.getMessage());
     	}
     }
     @Override
@@ -354,7 +347,7 @@ public class Admin extends User implements AdminInterface {
             );
         }
 
-        System.out.println("===============================================================\n");
+        System.out.println("-----------------------------------------------------\n");
     }
 }
 

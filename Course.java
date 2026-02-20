@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.io.Serializable;
 public class Course {
     private String courseName;
     private String courseId; 
