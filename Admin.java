@@ -1,6 +1,6 @@
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.io.IOException;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 
@@ -347,7 +347,7 @@ public class Admin extends User implements AdminInterface {
             );
         }
 
-        System.out.println("-----------------------------------------------------\n");
+        System.out.println("===============================================================\n");
     }
 }
 
